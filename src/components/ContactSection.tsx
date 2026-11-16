@@ -1,0 +1,560 @@
+import React, { useEffect, useState } from 'react';
+import { AnimatePresence, motion } from 'motion/react';
+import {
+  CheckCircle2,
+  ExternalLink,
+  Globe,
+  Mail,
+  MapPin,
+  Phone,
+  Send,
+} from 'lucide-react';
+import { COMPANY_INFO, SERVICES } from '../data/siteData';
+import { EASE_SETTLE, Reveal } from './MotionPrimitives';
+
+interface ContactSectionProps {
+  preselectedService: string;
+  contactFormRef: React.RefObject<HTMLDivElement | null>;
+}
+
+interface FormValues {
+  name: string;
+  company: string;
+  email: string;
+  phone: string;
+  service: string;
+  message: string;
+}
+
+interface FormErrors {
+  name?: string;
+  email?: string;
+  phone?: string;
+  service?: string;
+  message?: string;
+}
+
+const SERVICE_OPTIONS = [
+  ...SERVICES.map((s) => s.title),
+  'Biometric Solutions',
+  'Home & Office Automation',
+  'General Enquiry',
+];
+
+export const ContactSection: React.FC<ContactSectionProps> = ({
+  preselectedService,
+  contactFormRef,
+}) => {
+  const [values, setValues] = useState<FormValues>({
+    name: '',
+    company: '',
+    email: '',
+    phone: '',
+    service: preselectedService || SERVICES[0].title,
+    message: '',
+  });
+  const [errors, setErrors] = useState<FormErrors>({});
+  const [submitted, setSubmitted] = useState(false);
+  const [showLiveMap, setShowLiveMap] = useState(false);
+
+  useEffect(() => {
+    if (preselectedService) {
+      setValues((prev) => ({ ...prev, service: preselectedService }));
+      setSubmitted(false);
+    }
+  }, [preselectedService]);
+
+  const validate = (formValues: FormValues): FormErrors => {
+    const nextErrors: FormErrors = {};
+
+    if (!formValues.name.trim() || formValues.name.trim().length < 2) {
+      nextErrors.name = 'Please enter your full name.';
+    }
+
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!formValues.email.trim() || !emailPattern.test(formValues.email.trim())) {
+      nextErrors.email = 'Please enter a valid email address.';
+    }
+
+    const digitsOnly = formValues.phone.replace(/[\s\-()+]/g, '');
+    if (!digitsOnly || digitsOnly.length < 7 || !/^\d+$/.test(digitsOnly)) {
+      nextErrors.phone = 'Please enter a valid phone number.';
+    }
+
+    if (!formValues.service.trim()) {
+      nextErrors.service = 'Please select a service of interest.';
+    }
+
+    if (!formValues.message.trim() || formValues.message.trim().length < 10) {
+      nextErrors.message = 'Please share brief project details (at least 10 characters).';
+    }
+
+    return nextErrors;
+  };
+
+  const handleChange = (field: keyof FormValues, value: string) => {
+    setValues((prev) => ({ ...prev, [field]: value }));
+    if (errors[field as keyof FormErrors]) {
+      setErrors((prev) => ({ ...prev, [field]: undefined }));
+    }
+  };
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const validationErrors = validate(values);
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
+
+    /**
+     * BACKEND / FORM SERVICE INTEGRATION POINT:
+     * Connect Formspree, EmailJS, or your custom API endpoint here.
+     *
+     * Example (Formspree):
+     * await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+     *   method: 'POST',
+     *   headers: { 'Content-Type': 'application/json' },
+     *   body: JSON.stringify(values),
+     * });
+     *
+     * Example (EmailJS):
+     * await emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', values, 'YOUR_PUBLIC_KEY');
+     */
+
+    setErrors({});
+    setSubmitted(true);
+  };
+
+  const handleReset = () => {
+    setSubmitted(false);
+    setValues({
+      name: '',
+      company: '',
+      email: '',
+      phone: '',
+      service: SERVICES[0].title,
+      message: '',
+    });
+  };
+
+  return (
+    <section
+      id="contact"
+      className="border-t border-slate-200 bg-[#F6F8FB] py-16 sm:py-20 lg:py-24"
+    >
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <Reveal className="max-w-2xl">
+          <p className="text-xs font-semibold tracking-wider text-[#1FADE4] uppercase">
+            Get in Touch
+          </p>
+          <h2 className="mt-2 text-3xl font-bold tracking-tight text-[#1F2A5C] sm:text-4xl [text-wrap:balance]">
+            Request a Consultation or Quote
+          </h2>
+          <p className="mt-3 text-base text-slate-600">
+            Speak with our Mumbai team for solution consultation, site design,
+            installation, or maintenance support.
+          </p>
+        </Reveal>
+
+        <div className="mt-10 grid grid-cols-1 gap-8 lg:grid-cols-12">
+          {/* Left: Enquiry Form */}
+          <Reveal
+            delay={0.05}
+            ref={contactFormRef}
+            className="rounded-2xl border border-slate-200 bg-white p-6 shadow-xs sm:p-8 lg:col-span-7"
+          >
+            <AnimatePresence mode="wait">
+              {submitted ? (
+                <motion.div
+                  key="submitted-state"
+                  role="status"
+                  aria-live="polite"
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -12 }}
+                  transition={{ duration: 0.3, ease: EASE_SETTLE }}
+                  className="flex flex-col items-start justify-center py-8"
+                >
+                  <span className="flex h-12 w-12 items-center justify-center rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">
+                    <CheckCircle2 className="h-6 w-6" aria-hidden="true" />
+                  </span>
+                  <h3 className="mt-4 text-2xl font-bold text-[#1F2A5C]">
+                    Enquiry Received
+                  </h3>
+                  <p className="mt-2 max-w-lg text-sm leading-relaxed text-slate-600">
+                    Thank you,{' '}
+                    <span className="font-semibold text-[#1F2A5C]">{values.name}</span>.
+                    Your enquiry regarding{' '}
+                    <span className="font-semibold text-[#1F2A5C]">{values.service}</span>{' '}
+                    has been validated. For immediate assistance, call us on{' '}
+                    <a
+                      href={COMPANY_INFO.phones[0].href}
+                      className="font-semibold text-[#E31E24] underline"
+                    >
+                      {COMPANY_INFO.phones[0].display}
+                    </a>{' '}
+                    or email{' '}
+                    <a
+                      href={`mailto:${COMPANY_INFO.email}`}
+                      className="font-semibold text-[#1F2A5C] underline"
+                    >
+                      {COMPANY_INFO.email}
+                    </a>
+                    .
+                  </p>
+
+                  <button
+                    type="button"
+                    onClick={handleReset}
+                    className="mt-6 rounded-lg border border-slate-200 px-4 py-2 text-sm font-semibold text-[#1F2A5C] hover:bg-[#F6F8FB] cursor-pointer"
+                  >
+                    Send Another Enquiry
+                  </button>
+                </motion.div>
+              ) : (
+                <motion.form
+                  key="enquiry-form"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                  onSubmit={handleSubmit}
+                  noValidate
+                  className="space-y-5"
+                >
+                  <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+                    <div>
+                      <label
+                        htmlFor="contact-name"
+                        className="block text-xs font-semibold text-[#1F2A5C]"
+                      >
+                        Full Name <span className="text-[#E31E24]">*</span>
+                      </label>
+                      <input
+                        id="contact-name"
+                        name="name"
+                        type="text"
+                        required
+                        value={values.name}
+                        onChange={(e) => handleChange('name', e.target.value)}
+                        aria-invalid={Boolean(errors.name)}
+                        aria-describedby={errors.name ? 'error-name' : undefined}
+                        placeholder="Your full name"
+                        className={`mt-1.5 w-full rounded-lg border px-3.5 py-2.5 text-sm text-[#1F2A5C] placeholder:text-slate-400 focus:outline-none focus:ring-2 ${
+                          errors.name
+                            ? 'border-[#E31E24] focus:ring-[#E31E24]/25'
+                            : 'border-slate-200 focus:border-[#1FADE4] focus:ring-[#1FADE4]/25'
+                        }`}
+                      />
+                      {errors.name && (
+                        <p id="error-name" className="mt-1 text-xs font-medium text-[#E31E24]">
+                          {errors.name}
+                        </p>
+                      )}
+                    </div>
+
+                    <div>
+                      <label
+                        htmlFor="contact-company"
+                        className="block text-xs font-semibold text-[#1F2A5C]"
+                      >
+                        Company / Organisation
+                      </label>
+                      <input
+                        id="contact-company"
+                        name="company"
+                        type="text"
+                        value={values.company}
+                        onChange={(e) => handleChange('company', e.target.value)}
+                        placeholder="Company or society name (optional)"
+                        className="mt-1.5 w-full rounded-lg border border-slate-200 px-3.5 py-2.5 text-sm text-[#1F2A5C] placeholder:text-slate-400 focus:border-[#1FADE4] focus:outline-none focus:ring-2 focus:ring-[#1FADE4]/25"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+                    <div>
+                      <label
+                        htmlFor="contact-email"
+                        className="block text-xs font-semibold text-[#1F2A5C]"
+                      >
+                        Email Address <span className="text-[#E31E24]">*</span>
+                      </label>
+                      <input
+                        id="contact-email"
+                        name="email"
+                        type="email"
+                        required
+                        value={values.email}
+                        onChange={(e) => handleChange('email', e.target.value)}
+                        aria-invalid={Boolean(errors.email)}
+                        aria-describedby={errors.email ? 'error-email' : undefined}
+                        placeholder="you@company.com"
+                        className={`mt-1.5 w-full rounded-lg border px-3.5 py-2.5 text-sm text-[#1F2A5C] placeholder:text-slate-400 focus:outline-none focus:ring-2 ${
+                          errors.email
+                            ? 'border-[#E31E24] focus:ring-[#E31E24]/25'
+                            : 'border-slate-200 focus:border-[#1FADE4] focus:ring-[#1FADE4]/25'
+                        }`}
+                      />
+                      {errors.email && (
+                        <p id="error-email" className="mt-1 text-xs font-medium text-[#E31E24]">
+                          {errors.email}
+                        </p>
+                      )}
+                    </div>
+
+                    <div>
+                      <label
+                        htmlFor="contact-phone"
+                        className="block text-xs font-semibold text-[#1F2A5C]"
+                      >
+                        Phone Number <span className="text-[#E31E24]">*</span>
+                      </label>
+                      <input
+                        id="contact-phone"
+                        name="phone"
+                        type="tel"
+                        required
+                        value={values.phone}
+                        onChange={(e) => handleChange('phone', e.target.value)}
+                        aria-invalid={Boolean(errors.phone)}
+                        aria-describedby={errors.phone ? 'error-phone' : undefined}
+                        placeholder="+91 98XXX XXXXX"
+                        className={`mt-1.5 w-full rounded-lg border px-3.5 py-2.5 text-sm text-[#1F2A5C] placeholder:text-slate-400 focus:outline-none focus:ring-2 ${
+                          errors.phone
+                            ? 'border-[#E31E24] focus:ring-[#E31E24]/25'
+                            : 'border-slate-200 focus:border-[#1FADE4] focus:ring-[#1FADE4]/25'
+                        }`}
+                      />
+                      {errors.phone && (
+                        <p id="error-phone" className="mt-1 text-xs font-medium text-[#E31E24]">
+                          {errors.phone}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="contact-service"
+                      className="block text-xs font-semibold text-[#1F2A5C]"
+                    >
+                      Service of Interest <span className="text-[#E31E24]">*</span>
+                    </label>
+                    <select
+                      id="contact-service"
+                      name="service"
+                      value={values.service}
+                      onChange={(e) => handleChange('service', e.target.value)}
+                      aria-invalid={Boolean(errors.service)}
+                      aria-describedby={errors.service ? 'error-service' : undefined}
+                      className="mt-1.5 w-full rounded-lg border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-[#1F2A5C] focus:border-[#1FADE4] focus:outline-none focus:ring-2 focus:ring-[#1FADE4]/25"
+                    >
+                      {SERVICE_OPTIONS.map((option) => (
+                        <option key={option} value={option}>
+                          {option}
+                        </option>
+                      ))}
+                    </select>
+                    {errors.service && (
+                      <p id="error-service" className="mt-1 text-xs font-medium text-[#E31E24]">
+                        {errors.service}
+                      </p>
+                    )}
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="contact-message"
+                      className="block text-xs font-semibold text-[#1F2A5C]"
+                    >
+                      Requirement Details <span className="text-[#E31E24]">*</span>
+                    </label>
+                    <textarea
+                      id="contact-message"
+                      name="message"
+                      rows={4}
+                      required
+                      value={values.message}
+                      onChange={(e) => handleChange('message', e.target.value)}
+                      aria-invalid={Boolean(errors.message)}
+                      aria-describedby={errors.message ? 'error-message' : undefined}
+                      placeholder="Share site location, system requirements, or maintenance enquiry details..."
+                      className={`mt-1.5 w-full rounded-lg border px-3.5 py-2.5 text-sm text-[#1F2A5C] placeholder:text-slate-400 focus:outline-none focus:ring-2 ${
+                        errors.message
+                          ? 'border-[#E31E24] focus:ring-[#E31E24]/25'
+                          : 'border-slate-200 focus:border-[#1FADE4] focus:ring-[#1FADE4]/25'
+                      }`}
+                    />
+                    {errors.message && (
+                      <p id="error-message" className="mt-1 text-xs font-medium text-[#E31E24]">
+                        {errors.message}
+                      </p>
+                    )}
+                  </div>
+
+                  <div className="flex flex-col justify-between gap-3 pt-1 sm:flex-row sm:items-center">
+                    <p className="text-xs text-slate-500">
+                      All fields marked <span className="text-[#E31E24]">*</span> are required.
+                    </p>
+                    <motion.button
+                      type="submit"
+                      whileHover={{ y: -1 }}
+                      whileTap={{ scale: 0.98 }}
+                      className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#E31E24] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#c5181d] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1F2A5C] cursor-pointer"
+                    >
+                      Submit Enquiry
+                      <Send className="h-4 w-4" aria-hidden="true" />
+                    </motion.button>
+                  </div>
+                </motion.form>
+              )}
+            </AnimatePresence>
+          </Reveal>
+
+          {/* Right: Direct Contact Details & Map */}
+          <Reveal delay={0.12} className="flex flex-col gap-6 lg:col-span-5">
+            <div className="rounded-2xl border border-slate-200 bg-[#1F2A5C] p-6 text-white sm:p-8">
+              <h3 className="text-xl font-bold text-white">Our Contact Details</h3>
+              <p className="mt-1 text-sm text-slate-300">{COMPANY_INFO.name}</p>
+
+              <dl className="mt-6 space-y-5 text-sm">
+                <div className="flex items-start gap-3.5">
+                  <MapPin
+                    className="mt-0.5 h-5 w-5 shrink-0 text-[#1FADE4]"
+                    aria-hidden="true"
+                  />
+                  <div>
+                    <dt className="text-xs font-semibold tracking-wide text-slate-300 uppercase">
+                      Office Address
+                    </dt>
+                    <dd className="mt-1 leading-relaxed text-white">
+                      {COMPANY_INFO.address.line1}
+                      <br />
+                      {COMPANY_INFO.address.line2}
+                      <br />
+                      {COMPANY_INFO.address.cityStatePin}
+                    </dd>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3.5">
+                  <Phone
+                    className="mt-0.5 h-5 w-5 shrink-0 text-[#1FADE4]"
+                    aria-hidden="true"
+                  />
+                  <div>
+                    <dt className="text-xs font-semibold tracking-wide text-slate-300 uppercase">
+                      Phone Numbers
+                    </dt>
+                    <dd className="mt-1 flex flex-col gap-1">
+                      {COMPANY_INFO.phones.map((phone) => (
+                        <a
+                          key={phone.href}
+                          href={phone.href}
+                          className="font-semibold text-white transition-colors hover:text-[#1FADE4] tabular-nums"
+                        >
+                          {phone.display}
+                        </a>
+                      ))}
+                    </dd>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3.5">
+                  <Mail
+                    className="mt-0.5 h-5 w-5 shrink-0 text-[#1FADE4]"
+                    aria-hidden="true"
+                  />
+                  <div>
+                    <dt className="text-xs font-semibold tracking-wide text-slate-300 uppercase">
+                      Email
+                    </dt>
+                    <dd className="mt-1">
+                      <a
+                        href={`mailto:${COMPANY_INFO.email}`}
+                        className="font-semibold text-white transition-colors hover:text-[#1FADE4] break-all"
+                      >
+                        {COMPANY_INFO.email}
+                      </a>
+                    </dd>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3.5">
+                  <Globe
+                    className="mt-0.5 h-5 w-5 shrink-0 text-[#1FADE4]"
+                    aria-hidden="true"
+                  />
+                  <div>
+                    <dt className="text-xs font-semibold tracking-wide text-slate-300 uppercase">
+                      Website
+                    </dt>
+                    <dd className="mt-1">
+                      <a
+                        href={COMPANY_INFO.websiteUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="font-semibold text-white transition-colors hover:text-[#1FADE4]"
+                      >
+                        {COMPANY_INFO.website}
+                      </a>
+                    </dd>
+                  </div>
+                </div>
+              </dl>
+            </div>
+
+            {/* Ghatkopar West Map Placeholder + Optional Live Google Map Embed */}
+            <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white">
+              {showLiveMap ? (
+                <div className="relative h-56 w-full bg-slate-100">
+                  <iframe
+                    title="Sidhvi Tech Solutions, Ghatkopar West, Mumbai Location Map"
+                    src={COMPANY_INFO.address.googleMapsEmbedUrl}
+                    className="h-full w-full border-0"
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                  />
+                </div>
+              ) : (
+                <div className="relative flex h-56 flex-col items-center justify-center bg-gradient-to-br from-[#F6F8FB] to-[#E9EFF8] p-6 text-center">
+                  <MapPin className="h-7 w-7 text-[#E31E24]" aria-hidden="true" />
+                  <p className="mt-2.5 text-sm font-bold text-[#1F2A5C]">
+                    Ghatkopar West, Mumbai 400086
+                  </p>
+                  <p className="mt-1 max-w-xs text-xs text-slate-600">
+                    C-20 Kailash Esplanade, LBS Marg, Opp Shreyas Cinema
+                  </p>
+                  <button
+                    type="button"
+                    onClick={() => setShowLiveMap(true)}
+                    className="mt-4 rounded-lg border border-[#1F2A5C]/25 bg-white px-3.5 py-1.5 text-xs font-semibold text-[#1F2A5C] transition-colors hover:border-[#1F2A5C] cursor-pointer"
+                  >
+                    Load Interactive Map
+                  </button>
+                </div>
+              )}
+
+              <div className="flex items-center justify-between border-t border-slate-200 px-4 py-3 text-xs">
+                <span className="font-medium text-slate-600">
+                  Google Map · Ghatkopar West
+                </span>
+                <a
+                  href={COMPANY_INFO.address.googleMapsQuery}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 font-semibold text-[#1F2A5C] hover:text-[#E31E24]"
+                >
+                  Open in Maps
+                  <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
+                </a>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </div>
+    </section>
+  );
+};
