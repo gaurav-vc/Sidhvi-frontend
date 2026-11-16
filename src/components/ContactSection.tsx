@@ -55,7 +55,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
   });
   const [errors, setErrors] = useState<FormErrors>({});
   const [submitted, setSubmitted] = useState(false);
-  const [showLiveMap, setShowLiveMap] = useState(false);
+  const [showLiveMap, setShowLiveMap] = useState(true);
 
   useEffect(() => {
     if (preselectedService) {

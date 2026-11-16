@@ -85,10 +85,11 @@ export const HERO_CONTENT = {
     'Tailored systems for business, home, and personal needs—delivered end to end from solution consultation and design through installation, commissioning, maintenance, and monitoring.',
   primaryCta: 'Our Services',
   secondaryCta: 'Contact Us',
-  /** Replace with a real hero photo path (e.g., "/images/hero-security.jpg") when ready */
-  heroImage: undefined as string | undefined,
+  /** Modern commercial surveillance and security operations command center */
+  heroImage:
+    'https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&w=1200&q=80',
   heroImagePlaceholderLabel:
-    'Hero Visual Slot (16:9) — Modern Commercial Surveillance & Access Control',
+    'Hero Visual — Modern Commercial Surveillance & Access Control Operations',
 };
 
 export const ABOUT_CONTENT = {
@@ -98,10 +99,11 @@ export const ABOUT_CONTENT = {
     'Founded in 2015, Sidhvi Tech Solutions has over 50 years of combined experience in providing specialized integrated technology solutions to a variety of customers.',
     'The company currently offers all its customers complete security systems and solutions tailored to their business, home and personal needs. We pride ourselves on our ability to supply and deliver fully integrated advanced surveillance, security and ICT systems, including solution consultation, design, installation, commissioning, maintenance and monitoring.',
   ],
-  /** Replace with a real corporate office / architecture photo when ready */
-  aboutImage: undefined as string | undefined,
+  /** Corporate facility and integrated architecture */
+  aboutImage:
+    'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1000&q=80',
   aboutImagePlaceholderLabel:
-    'About Visual Slot (4:3) — Corporate Facility & Integrated Systems Architecture',
+    'About Visual — Corporate Facility & Integrated Systems Architecture',
   vision:
     'Be a globally respected technology enterprise enriching lives by creating value for stakeholders and being socially responsible.',
   mission: [
@@ -202,7 +204,9 @@ export const SERVICES: ServiceItem[] = [
       'PTZ',
       'Alarm',
     ],
-    imagePlaceholderLabel: 'Photo Slot — AI CCTV & Perimeter Surveillance',
+    image:
+      'https://images.unsplash.com/photo-1580894732444-8ecded7900cd?auto=format&fit=crop&w=800&q=80',
+    imagePlaceholderLabel: 'AI CCTV & Perimeter Surveillance Cameras',
   },
   {
     id: 'access-control',
@@ -221,7 +225,9 @@ export const SERVICES: ServiceItem[] = [
       'Car Management Using ANPR & Parking Management',
     ],
     relatedTaglineHighlight: 'Supports Biometric Solutions',
-    imagePlaceholderLabel: 'Photo Slot — Access Control, Turnstiles & Boom Barriers',
+    image:
+      'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80',
+    imagePlaceholderLabel: 'Access Control, Turnstiles & Boom Barriers',
   },
   {
     id: 'intercom-pabx',
@@ -235,7 +241,9 @@ export const SERVICES: ServiceItem[] = [
       'PABX Systems – IP & Analogue',
       'VDP Integrated Intercom Systems',
     ],
-    imagePlaceholderLabel: 'Photo Slot — Building Intercom & EPBX / PABX Hardware',
+    image:
+      'https://images.unsplash.com/photo-1534536281715-e28d76689b4d?auto=format&fit=crop&w=800&q=80',
+    imagePlaceholderLabel: 'Building Intercom & EPBX / PABX Hardware',
   },
   {
     id: 'video-door-phones',
@@ -249,7 +257,9 @@ export const SERVICES: ServiceItem[] = [
       'VDP Integrated Intercom Systems',
     ],
     relatedTaglineHighlight: 'Supports Home & Office Automation',
-    imagePlaceholderLabel: 'Photo Slot — Video Door Phone & Entry Verification',
+    image:
+      'https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=800&q=80',
+    imagePlaceholderLabel: 'Video Door Phone & Entry Verification',
   },
   {
     id: 'data-ftth',
@@ -263,7 +273,9 @@ export const SERVICES: ServiceItem[] = [
       'Cat6 Cabling – Data, Voice & Surveillance',
       'Fibre Cabling – FTTH – Video, Voice, & Data',
     ],
-    imagePlaceholderLabel: 'Photo Slot — Cat6 & FTTH Optical Fibre Cabling',
+    image:
+      'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=800&q=80',
+    imagePlaceholderLabel: 'Cat6 & FTTH Optical Fibre Cabling',
   },
   {
     id: 'it-systems',
@@ -276,7 +288,9 @@ export const SERVICES: ServiceItem[] = [
       'IT Hardware – Rentals & Outright',
       'Network Setup – Wired & Wireless',
     ],
-    imagePlaceholderLabel: 'Photo Slot — Enterprise IT Hardware & Networking',
+    image:
+      'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80',
+    imagePlaceholderLabel: 'Enterprise IT Hardware & Networking Systems',
   },
   {
     id: 'people-parking',
@@ -291,7 +305,9 @@ export const SERVICES: ServiceItem[] = [
       'Digitalised & Paperless Visitor Management',
       'Intelligent Software Management',
     ],
-    imagePlaceholderLabel: 'Photo Slot — ANPR Parking & Digital Visitor Management',
+    image:
+      'https://images.unsplash.com/photo-1506521781263-d8422e82f27a?auto=format&fit=crop&w=800&q=80',
+    imagePlaceholderLabel: 'ANPR Parking & Digital Visitor Management',
   },
   {
     id: 'mobile-signal-boosting',
@@ -304,7 +320,9 @@ export const SERVICES: ServiceItem[] = [
       'Improve mobile signal coverage in areas with weak mobile signal',
       'Network Setup – Wired & Wireless',
     ],
-    imagePlaceholderLabel: 'Photo Slot — Indoor Mobile Signal Coverage Enhancement',
+    image:
+      'https://images.unsplash.com/photo-1516245834210-c4c142787335?auto=format&fit=crop&w=800&q=80',
+    imagePlaceholderLabel: 'Indoor Mobile Signal Coverage Enhancement',
   },
   {
     id: 'commercial-displays',
@@ -314,7 +332,9 @@ export const SERVICES: ServiceItem[] = [
     shortSummary:
       'High-impact commercial display installations including seamless LED walls, interactive kiosks, and digital signage.',
     offerings: ['LED Walls', 'Kiosks', 'Digital Signage'],
-    imagePlaceholderLabel: 'Photo Slot — Commercial LED Video Walls & Kiosks',
+    image:
+      'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80',
+    imagePlaceholderLabel: 'Commercial LED Video Walls & Kiosks',
   },
   {
     id: 'ibms',
@@ -327,7 +347,9 @@ export const SERVICES: ServiceItem[] = [
       'Single, comprehensive building management system for HVAC, lighting, security, fire and other systems',
     ],
     relatedTaglineHighlight: 'Core platform for Home & Office Automation',
-    imagePlaceholderLabel: 'Photo Slot — Integrated Building Management Console',
+    image:
+      'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80',
+    imagePlaceholderLabel: 'Integrated Building Management Console & Automation',
   },
   {
     id: 'maintenance-support',
@@ -343,7 +365,9 @@ export const SERVICES: ServiceItem[] = [
       'Care Systems – Comprehensive & Non-Comprehensive',
       'Refurbishment of the equipment',
     ],
-    imagePlaceholderLabel: 'Photo Slot — Technical Support & Preventive Maintenance',
+    image:
+      'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=800&q=80',
+    imagePlaceholderLabel: 'Technical Support & Preventive Maintenance Care',
   },
 ];
 
@@ -351,10 +375,11 @@ export const TEAM_CONTENT = {
   title: 'Our Team',
   lead: 'Skilled professionals dedicated to integrated delivery.',
   body: 'We recognize that our employees are our most valuable asset. We foster a culture of inclusivity, collaboration, and continuous growth, empowering our workforce to reach their full potential. Our team consists of highly skilled professionals from diverse backgrounds, bringing a wealth of expertise and perspectives to the table.',
-  /** Replace with a real team photo path (e.g., "/images/team.jpg") when ready */
-  teamImage: undefined as string | undefined,
+  /** Sidhvi Tech Solutions engineering and support workforce */
+  teamImage:
+    'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1000&q=80',
   teamImagePlaceholderLabel:
-    'Team Visual Slot (4:3) — Sidhvi Tech Solutions Engineering & Delivery Team',
+    'Team Visual — Sidhvi Tech Solutions Engineering & Delivery Team',
 };
 
 export const CLIENTS: ClientItem[] = [
@@ -378,16 +403,45 @@ export const CLIENTS: ClientItem[] = [
 ];
 
 export const PARTNERS: PartnerItem[] = [
-  { name: 'Hikvision', qualifier: 'Official Partner', accentColor: '#E31E24' },
-  { name: 'CP Plus', accentColor: '#E31E24' },
-  { name: 'Dahua', accentColor: '#E31E24' },
+  {
+    name: 'Hikvision',
+    qualifier: 'Official Partner',
+    accentColor: '#E31E24',
+    logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/e/ee/Hikvision_logo.svg',
+  },
+  {
+    name: 'CP Plus',
+    accentColor: '#E31E24',
+    logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Cp_plus_logo.png/640px-Cp_plus_logo.png',
+  },
+  {
+    name: 'Dahua',
+    accentColor: '#E31E24',
+    logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/b/b5/Dahua_Technology_logo.svg',
+  },
   { name: 'Onetouch', accentColor: '#7C3AED' },
   { name: 'Zicom', accentColor: '#E31E24' },
   { name: 'Matrix', qualifier: 'Telecom | Security', accentColor: '#0E7490' },
   { name: 'Syntel', qualifier: 'Arvind Limited, Telecom Division', accentColor: '#1F2A5C' },
-  { name: 'D-Link', accentColor: '#0284C7' },
-  { name: 'Honeywell', accentColor: '#E31E24' },
+  {
+    name: 'D-Link',
+    accentColor: '#0284C7',
+    logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/4/4b/D-Link_logo.svg',
+  },
+  {
+    name: 'Honeywell',
+    accentColor: '#E31E24',
+    logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/0/00/Honeywell_logo.svg',
+  },
   { name: 'Polycab', accentColor: '#E31E24' },
-  { name: 'Seagate', accentColor: '#65A30D' },
-  { name: 'Panasonic', accentColor: '#0055A5' },
+  {
+    name: 'Seagate',
+    accentColor: '#65A30D',
+    logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/f/ff/Seagate_logo.svg',
+  },
+  {
+    name: 'Panasonic',
+    accentColor: '#0055A5',
+    logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/4/4c/Panasonic_logo_%28Blue%29.svg',
+  },
 ];

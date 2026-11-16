@@ -4,6 +4,83 @@ import { Award, Building } from 'lucide-react';
 import { CLIENTS, PARTNERS } from '../data/siteData';
 import { Reveal, StaggerContainer, StaggerItem } from './MotionPrimitives';
 
+const ClientTile: React.FC<{
+  client: (typeof CLIENTS)[number];
+  isHovered: boolean;
+}> = ({ client, isHovered }) => {
+  const [logoError, setLogoError] = useState(false);
+
+  if (client.logoUrl && !logoError) {
+    return (
+      <img
+        src={client.logoUrl}
+        alt={`${client.name} logo`}
+        loading="lazy"
+        referrerPolicy="no-referrer"
+        onError={() => setLogoError(true)}
+        className="max-h-11 w-auto max-w-full object-contain"
+      />
+    );
+  }
+
+  return (
+    <div className="flex flex-col items-center">
+      <Building
+        className="mb-1.5 h-4 w-4 transition-colors duration-200"
+        style={{ color: isHovered ? client.accentColor : '#94A3B8' }}
+        aria-hidden="true"
+      />
+      <span
+        className="text-xs font-bold tracking-tight leading-snug transition-colors duration-200 sm:text-[13px]"
+        style={{ color: isHovered ? client.accentColor : '#475569' }}
+      >
+        {client.name}
+      </span>
+      {client.sector && (
+        <span className="mt-0.5 text-[10px] font-medium text-slate-400">
+          {client.sector}
+        </span>
+      )}
+    </div>
+  );
+};
+
+const PartnerTile: React.FC<{
+  partner: (typeof PARTNERS)[number];
+  isHovered: boolean;
+}> = ({ partner, isHovered }) => {
+  const [logoError, setLogoError] = useState(false);
+
+  if (partner.logoUrl && !logoError) {
+    return (
+      <img
+        src={partner.logoUrl}
+        alt={`${partner.name} partner logo`}
+        loading="lazy"
+        referrerPolicy="no-referrer"
+        onError={() => setLogoError(true)}
+        className="max-h-10 w-auto max-w-full object-contain"
+      />
+    );
+  }
+
+  return (
+    <div className="flex flex-col items-center">
+      <span
+        className="text-sm font-extrabold tracking-tight transition-colors duration-200"
+        style={{ color: isHovered ? partner.accentColor : '#334155' }}
+      >
+        {partner.name}
+      </span>
+      {partner.qualifier && (
+        <span className="mt-1 text-[11px] font-medium leading-tight text-slate-500">
+          {partner.qualifier}
+        </span>
+      )}
+    </div>
+  );
+};
+
 export const ClientsPartnersSection: React.FC = () => {
   const [hoveredClient, setHoveredClient] = useState<string | null>(null);
   const [hoveredPartner, setHoveredPartner] = useState<string | null>(null);
@@ -69,34 +146,7 @@ export const ClientsPartnersSection: React.FC = () => {
                   transition={{ duration: 0.18 }}
                   className="group flex min-h-[96px] flex-col items-center justify-center rounded-xl border border-slate-200 bg-white p-4 text-center transition-all duration-200 grayscale hover:grayscale-0 hover:border-slate-300 hover:shadow-md"
                 >
-                  {client.logoUrl ? (
-                    <img
-                      src={client.logoUrl}
-                      alt={`${client.name} logo`}
-                      loading="lazy"
-                      referrerPolicy="no-referrer"
-                      className="max-h-11 w-auto object-contain"
-                    />
-                  ) : (
-                    <div className="flex flex-col items-center">
-                      <Building
-                        className="mb-1.5 h-4 w-4 transition-colors duration-200"
-                        style={{ color: isHovered ? client.accentColor : '#94A3B8' }}
-                        aria-hidden="true"
-                      />
-                      <span
-                        className="text-xs font-bold tracking-tight leading-snug transition-colors duration-200 sm:text-[13px]"
-                        style={{ color: isHovered ? client.accentColor : '#475569' }}
-                      >
-                        {client.name}
-                      </span>
-                      {client.sector && (
-                        <span className="mt-0.5 text-[10px] font-medium text-slate-400">
-                          {client.sector}
-                        </span>
-                      )}
-                    </div>
-                  )}
+                  <ClientTile client={client} isHovered={isHovered} />
                 </motion.div>
               </StaggerItem>
             );
@@ -139,29 +189,7 @@ export const ClientsPartnersSection: React.FC = () => {
                     transition={{ duration: 0.18 }}
                     className="group flex min-h-[96px] flex-col items-center justify-center rounded-xl border border-slate-200 bg-[#F6F8FB] p-4 text-center transition-all duration-200 grayscale hover:grayscale-0 hover:bg-white hover:border-slate-300 hover:shadow-md"
                   >
-                    {partner.logoUrl ? (
-                      <img
-                        src={partner.logoUrl}
-                        alt={`${partner.name} partner logo`}
-                        loading="lazy"
-                        referrerPolicy="no-referrer"
-                        className="max-h-11 w-auto object-contain"
-                      />
-                    ) : (
-                      <div className="flex flex-col items-center">
-                        <span
-                          className="text-sm font-extrabold tracking-tight transition-colors duration-200"
-                          style={{ color: isHovered ? partner.accentColor : '#334155' }}
-                        >
-                          {partner.name}
-                        </span>
-                        {partner.qualifier && (
-                          <span className="mt-1 text-[11px] font-medium leading-tight text-slate-500">
-                            {partner.qualifier}
-                          </span>
-                        )}
-                      </div>
-                    )}
+                    <PartnerTile partner={partner} isHovered={isHovered} />
                   </motion.div>
                 </StaggerItem>
               );

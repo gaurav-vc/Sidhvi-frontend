@@ -124,15 +124,54 @@ export const Hero: React.FC<HeroProps> = ({ onContactClick }) => {
             className="flex flex-col justify-center lg:col-span-5"
           >
             {HERO_CONTENT.heroImage ? (
-              <ImagePlaceholder
-                src={HERO_CONTENT.heroImage}
-                alt="Sidhvi Tech Solutions integrated surveillance, access control, and ICT infrastructure"
-                label={HERO_CONTENT.heroImagePlaceholderLabel}
-                aspectClass="h-full min-h-[280px] lg:min-h-[370px]"
-                theme="navy"
-                icon="security"
-                priority
-              />
+              <div className="relative overflow-hidden rounded-2xl border border-white/20 bg-gradient-to-br from-[#1F2A5C] via-[#243169] to-[#151D43] shadow-2xl">
+                <div className="relative h-[320px] sm:h-[380px] lg:h-[440px] w-full overflow-hidden">
+                  <img
+                    src={HERO_CONTENT.heroImage}
+                    alt="Sidhvi Tech Solutions integrated surveillance, access control, and ICT infrastructure"
+                    loading="eager"
+                    referrerPolicy="no-referrer"
+                    className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#1F2A5C] via-[#1F2A5C]/40 to-transparent pointer-events-none" />
+
+                  {/* Top Live Ops Status Badge */}
+                  <div className="absolute top-4 left-4 flex items-center gap-2 rounded-full bg-[#1F2A5C]/85 px-3 py-1.5 backdrop-blur-md border border-white/20 text-white shadow-md">
+                    <span className="relative flex h-2 w-2">
+                      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+                      <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+                    </span>
+                    <span className="text-[11px] font-semibold tracking-wide">
+                      Live Command &amp; Surveillance Ops
+                    </span>
+                  </div>
+
+                  {/* Corner Calibration Accents */}
+                  <span
+                    aria-hidden="true"
+                    className="pointer-events-none absolute right-4 top-4 h-4 w-4 border-r-2 border-t-2 border-[#1FADE4]"
+                  />
+                  <span
+                    aria-hidden="true"
+                    className="pointer-events-none absolute left-4 bottom-4 h-4 w-4 border-l-2 border-b-2 border-[#E31E24]"
+                  />
+
+                  {/* Bottom capability strip */}
+                  <div className="absolute bottom-4 left-4 right-4 flex flex-wrap items-center justify-between gap-2 rounded-xl bg-[#1F2A5C]/90 px-4 py-2.5 backdrop-blur-md border border-white/10 text-white">
+                    <div>
+                      <p className="text-[11px] font-semibold text-[#1FADE4] uppercase tracking-wider">
+                        Integrated Infrastructure
+                      </p>
+                      <p className="text-xs font-bold text-slate-100">
+                        CCTV • Access Control • EPBX • FTTH
+                      </p>
+                    </div>
+                    <span className="rounded bg-[#E31E24] px-2 py-0.5 text-[10px] font-bold tracking-wider text-white uppercase shadow-xs">
+                      24/7 Monitored
+                    </span>
+                  </div>
+                </div>
+              </div>
             ) : (
               /* Animated Architectural Integrated-Security Schematic Placeholder (replace via HERO_CONTENT.heroImage) */
               <div

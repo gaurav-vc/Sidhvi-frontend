@@ -44,7 +44,7 @@ export const ImagePlaceholder: React.FC<ImagePlaceholderProps> = ({
   if (src && !hasError) {
     return (
       <div
-        className={`relative overflow-hidden rounded-xl border border-slate-200 bg-slate-100 ${aspectClass} ${className}`}
+        className={`group relative overflow-hidden rounded-xl border border-slate-200 bg-slate-100 ${aspectClass} ${className}`}
       >
         <img
           src={src}
@@ -52,7 +52,7 @@ export const ImagePlaceholder: React.FC<ImagePlaceholderProps> = ({
           loading={priority ? 'eager' : 'lazy'}
           referrerPolicy="no-referrer"
           onError={() => setHasError(true)}
-          className="h-full w-full object-cover"
+          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
         />
       </div>
     );
