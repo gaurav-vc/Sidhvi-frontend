@@ -89,24 +89,25 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
   };
 
   return (
-    <section id="services" className="bg-white py-16 sm:py-20 lg:py-24">
+    <section id="services" className="bg-[#FAF9F7] py-16 sm:py-20 lg:py-24 border-b border-[#DBDAD7]">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header & Sliding Filter Bar */}
         <Reveal className="flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
           <div className="max-w-2xl">
-            <p className="text-xs font-semibold tracking-wider text-[#1FADE4] uppercase">
+            <span className="inline-flex items-center gap-2 text-xs font-bold tracking-wider text-[#7B5455] uppercase">
+              <span className="h-1.5 w-6 rounded-full bg-[#F4C2C2]" />
               Products &amp; Services
-            </p>
-            <h2 className="mt-2 text-3xl font-bold tracking-tight text-[#1F2A5C] sm:text-4xl [text-wrap:balance]">
+            </span>
+            <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-[#202124] sm:text-4xl [text-wrap:balance]">
               Integrated Technology &amp; Security Portfolio
             </h2>
-            <p className="mt-3 text-base text-slate-600">{WHO_WE_SERVE}</p>
+            <p className="mt-3 text-base text-[#5A5B62]">{WHO_WE_SERVE}</p>
           </div>
 
           <div
             role="tablist"
             aria-label="Filter services by category"
-            className="flex flex-wrap items-center gap-1 rounded-lg bg-[#F6F8FB] p-1 border border-slate-200 self-start lg:self-auto"
+            className="flex flex-wrap items-center gap-1.5 rounded-xl bg-[#EFEEEB] p-1.5 border border-[#DBDAD7] self-start lg:self-auto shadow-2xs"
           >
             {FILTER_TABS.map((tab) => {
               const isActive = activeFilter === tab.key;
@@ -117,15 +118,15 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
                   role="tab"
                   aria-selected={isActive}
                   onClick={() => setActiveFilter(tab.key)}
-                  className={`relative rounded-md px-3 py-1.5 text-xs font-semibold transition-colors whitespace-nowrap shrink-0 cursor-pointer ${
-                    isActive ? 'text-white' : 'text-[#333F6B] hover:text-[#1F2A5C]'
+                  className={`relative rounded-lg px-3.5 py-1.5 text-xs font-bold transition-colors whitespace-nowrap shrink-0 cursor-pointer ${
+                    isActive ? 'text-white' : 'text-[#5A5B62] hover:text-[#202124]'
                   }`}
                 >
                   {isActive && (
                     <motion.span
                       layoutId="serviceFilterActiveTab"
                       transition={{ duration: 0.25, ease: EASE_SETTLE }}
-                      className="absolute inset-0 rounded-md bg-[#1F2A5C] shadow-xs"
+                      className="absolute inset-0 rounded-lg bg-[#7B5455] shadow-xs"
                     />
                   )}
                   <span className="relative z-10">{tab.label}</span>
@@ -142,28 +143,28 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
               <motion.div
                 whileHover={{ y: -2 }}
                 transition={{ duration: 0.18 }}
-                className="flex h-full flex-col justify-between gap-4 rounded-xl border border-slate-200 bg-[#F6F8FB] p-5 transition-colors hover:border-[#1FADE4] sm:flex-row sm:items-center"
+                className="flex h-full flex-col justify-between gap-4 rounded-2xl border border-[#DBDAD7] bg-[#EFEEEB] p-5.5 transition-all hover:border-[#7B5455]/40 hover:shadow-xs sm:flex-row sm:items-center"
               >
                 <div className="flex items-start gap-3.5">
-                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-white border border-slate-200 text-[#E31E24]">
+                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white border border-[#DBDAD7] text-[#7B5455] shadow-2xs">
                     {idx === 0 ? (
-                      <Fingerprint className="h-5 w-5" aria-hidden="true" />
+                      <Fingerprint className="h-5 w-5 text-[#7B5455]" aria-hidden="true" />
                     ) : (
-                      <Home className="h-5 w-5" aria-hidden="true" />
+                      <Home className="h-5 w-5 text-[#7B5455]" aria-hidden="true" />
                     )}
                   </span>
                   <div>
-                    <h3 className="text-base font-bold text-[#1F2A5C]">{highlight.title}</h3>
-                    <p className="mt-1 text-sm text-slate-600">{highlight.description}</p>
+                    <h3 className="text-base font-extrabold text-[#202124]">{highlight.title}</h3>
+                    <p className="mt-1 text-sm text-[#5A5B62]">{highlight.description}</p>
                   </div>
                 </div>
                 <button
                   type="button"
                   onClick={() => openServiceById(highlight.targetServiceId)}
-                  className="inline-flex items-center gap-1.5 self-start text-xs font-semibold text-[#1F2A5C] hover:text-[#E31E24] transition-colors whitespace-nowrap shrink-0 sm:self-center cursor-pointer"
+                  className="inline-flex items-center gap-1.5 self-start text-xs font-bold text-[#7B5455] hover:text-[#202124] transition-colors whitespace-nowrap shrink-0 sm:self-center cursor-pointer"
                 >
                   {highlight.targetLabel}
-                  <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+                  <ArrowRight className="h-3.5 w-3.5 text-[#7B5455]" aria-hidden="true" />
                 </button>
               </motion.div>
             </StaggerItem>
@@ -195,7 +196,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
                     delay: Math.min(index * 0.035, 0.25),
                     ease: EASE_SETTLE,
                   }}
-                  className="group flex flex-col justify-between rounded-xl border border-slate-200 bg-white transition-colors duration-200 hover:border-[#1FADE4] hover:shadow-lg"
+                  className="group flex flex-col justify-between rounded-2xl border border-[#DBDAD7] bg-white transition-all duration-200 hover:border-[#7B5455] hover:shadow-[0_12px_32px_rgba(123,84,85,0.12)]"
                 >
                   <div>
                     <div className="p-3 pb-0">
@@ -217,31 +218,31 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
 
                     <div className="p-6">
                       <div className="flex items-center gap-3">
-                        <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#F6F8FB] text-[#1F2A5C] transition-colors duration-200 group-hover:bg-[#1F2A5C] group-hover:text-white">
+                        <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#EFEEEB] text-[#7B5455] transition-colors duration-200 group-hover:bg-[#7B5455] group-hover:text-white shadow-2xs">
                           <Icon className="h-5 w-5" aria-hidden="true" />
                         </span>
-                        <h3 className="text-lg font-bold text-[#1F2A5C]">{service.title}</h3>
+                        <h3 className="text-lg font-bold text-[#202124]">{service.title}</h3>
                       </div>
 
-                      <p className="mt-3 text-sm leading-relaxed text-slate-600">
+                      <p className="mt-3 text-sm leading-relaxed text-[#5A5B62]">
                         {service.shortSummary}
                       </p>
 
-                      <ul className="mt-4 space-y-2 border-t border-slate-100 pt-4">
+                      <ul className="mt-4 space-y-2 border-t border-[#E9E8E5] pt-4">
                         {visibleOfferings.map((item) => (
                           <li
                             key={item}
-                            className="flex items-start gap-2 text-sm text-[#333F6B]"
+                            className="flex items-start gap-2 text-sm text-[#36373B]"
                           >
                             <Check
-                              className="mt-0.5 h-4 w-4 shrink-0 text-[#1FADE4]"
+                              className="mt-0.5 h-4 w-4 shrink-0 text-[#7B5455]"
                               aria-hidden="true"
                             />
                             <span>{item}</span>
                           </li>
                         ))}
                         {remainingCount > 0 && (
-                          <li className="pl-6 text-xs font-medium text-slate-500">
+                          <li className="pl-6 text-xs font-semibold text-[#7B5455]">
                             + {remainingCount} more offerings in detail view
                           </li>
                         )}
@@ -249,11 +250,11 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
                     </div>
                   </div>
 
-                  <div className="flex items-center justify-between border-t border-slate-100 px-6 py-4">
+                  <div className="flex items-center justify-between border-t border-[#E9E8E5] px-6 py-4 bg-[#FAF9F7]/60 rounded-b-2xl">
                     <button
                       type="button"
                       onClick={() => setSelectedService(service)}
-                      className="text-xs font-semibold text-[#333F6B] hover:text-[#1F2A5C] underline-offset-4 hover:underline cursor-pointer"
+                      className="text-xs font-bold text-[#5A5B62] hover:text-[#7B5455] underline-offset-4 hover:underline cursor-pointer"
                     >
                       View Full Details
                     </button>
@@ -261,11 +262,11 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
                     <button
                       type="button"
                       onClick={() => onEnquireService(service.title)}
-                      className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#E31E24] hover:text-[#1F2A5C] transition-colors cursor-pointer"
+                      className="inline-flex items-center gap-1.5 text-sm font-bold text-[#7B5455] hover:text-[#202124] transition-colors cursor-pointer"
                     >
                       Enquire
                       <ArrowRight
-                        className="h-4 w-4 transition-transform duration-150 group-hover:translate-x-0.5"
+                        className="h-4 w-4 transition-transform duration-150 group-hover:translate-x-0.5 text-[#7B5455]"
                         aria-hidden="true"
                       />
                     </button>
@@ -288,7 +289,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-[#1F2A5C]/65 p-4 backdrop-blur-xs"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-[#202124]/75 p-4 backdrop-blur-xs"
             onClick={() => setSelectedService(null)}
           >
             <motion.div
@@ -296,17 +297,17 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.96, y: 12 }}
               transition={{ duration: 0.25, ease: EASE_SETTLE }}
-              className="relative max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-2xl border border-slate-200 bg-white p-6 shadow-2xl sm:p-8"
+              className="relative max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-3xl border border-[#DBDAD7] bg-[#FAF9F7] p-6 shadow-2xl sm:p-8"
               onClick={(e) => e.stopPropagation()}
             >
               <div className="flex items-start justify-between gap-4">
                 <div>
-                  <p className="text-xs font-semibold tracking-wider text-[#1FADE4] uppercase">
+                  <span className="text-xs font-bold tracking-wider text-[#7B5455] uppercase">
                     Service Specifications
-                  </p>
+                  </span>
                   <h3
                     id="service-modal-title"
-                    className="mt-1 text-2xl font-bold text-[#1F2A5C]"
+                    className="mt-1 text-2xl font-extrabold text-[#202124]"
                   >
                     {selectedService.title}
                   </h3>
@@ -316,7 +317,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
                   type="button"
                   onClick={() => setSelectedService(null)}
                   aria-label="Close service details"
-                  className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 text-slate-500 hover:bg-slate-50 hover:text-[#1F2A5C] cursor-pointer"
+                  className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-[#DBDAD7] text-[#5A5B62] hover:bg-[#EFEEEB] hover:text-[#202124] cursor-pointer"
                 >
                   <X className="h-5 w-5" aria-hidden="true" />
                 </button>
@@ -328,32 +329,32 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
                   alt={`${selectedService.title} detailed visual`}
                   label={selectedService.imagePlaceholderLabel}
                   aspectClass="aspect-[16/9]"
-                  theme="navy"
+                  theme="light"
                 />
               </div>
 
-              <p className="mt-5 text-base leading-relaxed text-slate-600">
+              <p className="mt-5 text-base leading-relaxed text-[#5A5B62]">
                 {selectedService.shortSummary}
               </p>
 
               {selectedService.relatedTaglineHighlight && (
-                <p className="mt-3 text-xs font-medium text-[#1F2A5C]">
+                <p className="mt-3 text-xs font-bold text-[#7B5455] bg-[#F4C2C2]/20 inline-block px-3 py-1 rounded-full border border-[#F4C2C2]/40">
                   Related Capability: {selectedService.relatedTaglineHighlight}
                 </p>
               )}
 
-              <div className="mt-6 border-t border-slate-200 pt-5">
-                <h4 className="text-sm font-bold text-[#1F2A5C]">
+              <div className="mt-6 border-t border-[#DBDAD7] pt-5">
+                <h4 className="text-sm font-extrabold text-[#202124]">
                   Complete Offerings Included
                 </h4>
                 <ul className="mt-3 grid grid-cols-1 gap-2.5 sm:grid-cols-2">
                   {selectedService.offerings.map((offering) => (
                     <li
                       key={offering}
-                      className="flex items-start gap-2 rounded-lg border border-slate-100 bg-[#F6F8FB] px-3 py-2.5 text-sm text-[#1F2A5C]"
+                      className="flex items-start gap-2 rounded-xl border border-[#DBDAD7] bg-white px-3.5 py-2.5 text-sm font-medium text-[#202124]"
                     >
                       <Check
-                        className="mt-0.5 h-4 w-4 shrink-0 text-[#1FADE4]"
+                        className="mt-0.5 h-4 w-4 shrink-0 text-[#7B5455]"
                         aria-hidden="true"
                       />
                       <span>{offering}</span>
@@ -362,11 +363,11 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
                 </ul>
               </div>
 
-              <div className="mt-7 flex flex-wrap items-center justify-end gap-3 border-t border-slate-200 pt-5">
+              <div className="mt-7 flex flex-wrap items-center justify-end gap-3 border-t border-[#DBDAD7] pt-5">
                 <button
                   type="button"
                   onClick={() => setSelectedService(null)}
-                  className="rounded-lg border border-slate-200 px-4 py-2.5 text-sm font-semibold text-[#333F6B] hover:bg-slate-50 cursor-pointer"
+                  className="rounded-xl border border-[#DBDAD7] px-4.5 py-2.5 text-sm font-bold text-[#5A5B62] hover:bg-[#EFEEEB] cursor-pointer"
                 >
                   Close
                 </button>
@@ -377,10 +378,10 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
                     setSelectedService(null);
                     onEnquireService(title);
                   }}
-                  className="inline-flex items-center gap-2 rounded-lg bg-[#E31E24] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#c5181d] cursor-pointer"
+                  className="inline-flex items-center gap-2 rounded-xl bg-[#7B5455] px-5.5 py-2.5 text-sm font-bold text-white hover:bg-[#654344] shadow-xs cursor-pointer"
                 >
                   Enquire About {selectedService.title}
-                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                  <ArrowRight className="h-4 w-4 text-white" aria-hidden="true" />
                 </button>
               </div>
             </motion.div>

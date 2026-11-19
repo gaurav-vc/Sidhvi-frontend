@@ -86,23 +86,24 @@ export const ClientsPartnersSection: React.FC = () => {
   const [hoveredPartner, setHoveredPartner] = useState<string | null>(null);
 
   return (
-    <section id="clients-partners" className="bg-white py-16 sm:py-20 lg:py-24">
+    <section id="clients-partners" className="bg-[#FAF9F7] py-16 sm:py-20 lg:py-24 border-b border-[#DBDAD7]">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Clients Header */}
         <Reveal className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
           <div className="max-w-2xl">
-            <p className="text-xs font-semibold tracking-wider text-[#1FADE4] uppercase">
+            <span className="inline-flex items-center gap-2 text-xs font-bold tracking-wider text-[#7B5455] uppercase">
+              <span className="h-1.5 w-6 rounded-full bg-[#F4C2C2]" />
               Trusted Relationships
-            </p>
-            <h2 className="mt-2 text-3xl font-bold tracking-tight text-[#1F2A5C] sm:text-4xl [text-wrap:balance]">
+            </span>
+            <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-[#202124] sm:text-4xl [text-wrap:balance]">
               Few of Our Clients
             </h2>
-            <p className="mt-2 text-base text-slate-600">
+            <p className="mt-2 text-base text-[#5A5B62]">
               Serving organisations across real estate, retail, telecom, finance, shipping,
               and automotive sectors.
             </p>
           </div>
-          <p className="text-xs font-medium text-slate-500">
+          <p className="text-xs font-semibold text-[#7B5455]">
             Hover any logo tile to preview colour state
           </p>
         </Reveal>
@@ -110,18 +111,18 @@ export const ClientsPartnersSection: React.FC = () => {
         {/* Subtle Auto-Scroll Marquee Strip */}
         <Reveal delay={0.08}>
           <div
-            className="mt-8 overflow-hidden rounded-xl border border-slate-200 bg-[#F6F8FB] py-3.5"
+            className="mt-8 overflow-hidden rounded-2xl border border-[#DBDAD7] bg-[#EFEEEB] py-3.5 shadow-2xs"
             aria-label="Client showcase marquee"
           >
             <div className="animate-marquee items-center gap-8 px-4">
               {[...CLIENTS, ...CLIENTS].map((client, idx) => (
                 <div
                   key={`${client.name}-${idx}`}
-                  className="flex items-center gap-3 whitespace-nowrap text-sm font-semibold text-slate-500 transition-colors hover:text-[#1F2A5C]"
+                  className="flex items-center gap-3 whitespace-nowrap text-sm font-bold text-[#5A5B62] transition-colors hover:text-[#202124]"
                 >
                   <span
                     aria-hidden="true"
-                    className="h-1.5 w-1.5 rounded-full bg-slate-300"
+                    className="h-1.5 w-1.5 rounded-full bg-[#7B5455]"
                   />
                   <span>{client.name}</span>
                 </div>
@@ -130,7 +131,7 @@ export const ClientsPartnersSection: React.FC = () => {
           </div>
         </Reveal>
 
-        {/* Client Logo Placeholder Grid (Greyscale -> Colour on Hover + Stagger) */}
+        {/* Client Logo Grid (Greyscale -> Colour on Hover + Stagger) */}
         <StaggerContainer
           staggerDelay={0.03}
           className="mt-6 grid grid-cols-2 gap-3.5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6"
@@ -144,7 +145,7 @@ export const ClientsPartnersSection: React.FC = () => {
                   onMouseLeave={() => setHoveredClient(null)}
                   whileHover={{ y: -3 }}
                   transition={{ duration: 0.18 }}
-                  className="group flex min-h-[96px] flex-col items-center justify-center rounded-xl border border-slate-200 bg-white p-4 text-center transition-all duration-200 grayscale hover:grayscale-0 hover:border-slate-300 hover:shadow-md"
+                  className="group flex min-h-[96px] flex-col items-center justify-center rounded-2xl border border-[#DBDAD7] bg-white p-4 text-center transition-all duration-200 grayscale hover:grayscale-0 hover:border-[#7B5455]/50 hover:shadow-xs shadow-2xs"
                 >
                   <ClientTile client={client} isHovered={isHovered} />
                 </motion.div>
@@ -154,22 +155,23 @@ export const ClientsPartnersSection: React.FC = () => {
         </StaggerContainer>
 
         {/* Partners Divider & Grid */}
-        <div className="mt-16 border-t border-slate-200 pt-14">
+        <div className="mt-16 border-t border-[#DBDAD7] pt-14">
           <Reveal className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
             <div className="max-w-2xl">
-              <p className="text-xs font-semibold tracking-wider text-[#E31E24] uppercase">
+              <span className="inline-flex items-center gap-2 text-xs font-bold tracking-wider text-[#7B5455] uppercase">
+                <span className="h-1.5 w-6 rounded-full bg-[#F4C2C2]" />
                 Technology Ecosystem
-              </p>
-              <h2 className="mt-2 text-3xl font-bold tracking-tight text-[#1F2A5C] sm:text-4xl [text-wrap:balance]">
+              </span>
+              <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-[#202124] sm:text-4xl [text-wrap:balance]">
                 Our Partners
               </h2>
-              <p className="mt-2 text-base text-slate-600">
+              <p className="mt-2 text-base text-[#5A5B62]">
                 Working with leading surveillance, telecom, networking, cabling, and
                 storage hardware brands.
               </p>
             </div>
-            <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#1F2A5C]">
-              <Award className="h-4 w-4 text-[#E31E24]" aria-hidden="true" />
+            <span className="inline-flex items-center gap-2 rounded-full border border-[#DBDAD7] bg-[#EFEEEB] px-3.5 py-1 text-xs font-bold text-[#7B5455] shadow-2xs">
+              <Award className="h-4 w-4 text-[#7B5455]" aria-hidden="true" />
               Hikvision Official Partner
             </span>
           </Reveal>
@@ -187,7 +189,7 @@ export const ClientsPartnersSection: React.FC = () => {
                     onMouseLeave={() => setHoveredPartner(null)}
                     whileHover={{ y: -3 }}
                     transition={{ duration: 0.18 }}
-                    className="group flex min-h-[96px] flex-col items-center justify-center rounded-xl border border-slate-200 bg-[#F6F8FB] p-4 text-center transition-all duration-200 grayscale hover:grayscale-0 hover:bg-white hover:border-slate-300 hover:shadow-md"
+                    className="group flex min-h-[96px] flex-col items-center justify-center rounded-2xl border border-[#DBDAD7] bg-[#EFEEEB] p-4 text-center transition-all duration-200 grayscale hover:grayscale-0 hover:bg-white hover:border-[#7B5455]/50 hover:shadow-xs shadow-2xs"
                   >
                     <PartnerTile partner={partner} isHovered={isHovered} />
                   </motion.div>

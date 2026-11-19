@@ -34,10 +34,10 @@ export default function App() {
 
   return (
     <MotionProvider>
-      <div className="min-h-screen bg-white text-[#1F2A5C]">
+      <div className="min-h-screen bg-[#FAF9F7] text-[#202124]">
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-[#1F2A5C] focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-[#7B5455] focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white"
         >
           Skip to main content
         </a>

@@ -27,7 +27,7 @@ export const ScrollProgressBar: React.FC = () => {
     <motion.div
       aria-hidden="true"
       style={{ scaleX }}
-      className="pointer-events-none absolute bottom-0 left-0 right-0 h-[2px] origin-left bg-gradient-to-r from-[#1FADE4] via-[#1F2A5C] to-[#E31E24]"
+      className="pointer-events-none absolute bottom-0 left-0 right-0 h-[2.5px] origin-left bg-gradient-to-r from-[#7B5455] via-[#D49D9D] to-[#F4C2C2]"
     />
   );
 };

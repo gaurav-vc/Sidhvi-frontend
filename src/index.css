@@ -1,26 +1,45 @@
 @import "tailwindcss";
 
 @theme {
-  --font-display: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Manrope", ui-sans-serif, system-ui, sans-serif;
   --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
 
-  --color-brand-navy: #1F2A5C;
-  --color-brand-navy-mid: #333F6B;
-  --color-brand-red: #E31E24;
-  --color-brand-sky: #1FADE4;
-  --color-brand-surface: #F6F8FB;
+  /* Luminous Minimalist Palette - Strictly Warm Rosewood, Rose Blush & Charcoal (Zero Blue) */
+  --color-brand-primary: #7B5455;
+  --color-brand-primary-hover: #654344;
+  --color-brand-rose: #F4C2C2;
+  --color-brand-rose-deep: #D49D9D;
+  --color-brand-rose-subtle: #FAF0F0;
+  --color-brand-dark: #202124;
+  --color-brand-charcoal: #2A2B30;
+  --color-brand-surface: #EFEEEB;
+  --color-brand-surface-light: #F7F6F4;
+  --color-brand-border: #DBDAD7;
+  --color-brand-border-light: #E9E8E5;
 }
 
-@layer base {
-  html {
-    font-family: var(--font-sans);
-    scroll-padding-top: 4.5rem;
-  }
+html {
+  font-family: var(--font-sans);
+  scroll-padding-top: 4.5rem;
+  background-color: #FAF9F7;
+  color: #202124;
+}
 
-  h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-display);
-  }
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  letter-spacing: -0.025em;
+}
+
+/* Warm Luminous Minimalist dot matrix patterns (Zero Blue) */
+.bg-dot-pattern {
+  background-image: radial-gradient(rgba(123, 84, 85, 0.12) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.bg-dot-pattern-dark {
+  background-image: radial-gradient(rgba(244, 194, 194, 0.14) 1px, transparent 1px);
+  background-size: 24px 24px;
 }
 
 @keyframes marqueeScroll {

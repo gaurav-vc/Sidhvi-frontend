@@ -383,18 +383,18 @@ export const TEAM_CONTENT = {
 };
 
 export const CLIENTS: ClientItem[] = [
-  { name: 'Mayfair', sector: 'Real Estate', accentColor: '#1F2A5C' },
+  { name: 'Mayfair', sector: 'Real Estate', accentColor: '#202124' },
   { name: 'Neerja Group of Companies', sector: 'Enterprise', accentColor: '#D97706' },
-  { name: 'Hubtown', sector: 'Real Estate', accentColor: '#1F2A5C' },
+  { name: 'Hubtown', sector: 'Real Estate', accentColor: '#7B5455' },
   { name: 'Indiabulls Real Estate', sector: 'Real Estate', accentColor: '#15803D' },
   { name: 'Sunteck', sector: 'Real Estate', accentColor: '#B45309' },
-  { name: 'Vraj Group', sector: 'Real Estate', accentColor: '#1F2A5C' },
+  { name: 'Vraj Group', sector: 'Real Estate', accentColor: '#202124' },
   { name: 'Axis Mutual Fund', sector: 'Finance', accentColor: '#97144D' },
-  { name: 'Sterling Shipping Services Ltd', sector: 'Logistics', accentColor: '#1D4ED8' },
-  { name: 'Sugee', sector: 'Real Estate', accentColor: '#0284C7' },
+  { name: 'Sterling Shipping Services Ltd', sector: 'Logistics', accentColor: '#7B5455' },
+  { name: 'Sugee', sector: 'Real Estate', accentColor: '#8B5E60' },
   { name: 'Reliance Retail', sector: 'Retail', accentColor: '#E31E24' },
   { name: '7-Eleven', sector: 'Retail', accentColor: '#EA580C' },
-  { name: 'Chrome', sector: 'Enterprise', accentColor: '#1F2A5C' },
+  { name: 'Chrome', sector: 'Enterprise', accentColor: '#202124' },
   { name: 'Jio', sector: 'Telecom', accentColor: '#E31E24' },
   { name: 'CBRE', sector: 'Commercial Real Estate', accentColor: '#003F2D' },
   { name: 'Kiran Motors Maharashtra', sector: 'Automotive', accentColor: '#CA8A04' },
@@ -419,13 +419,13 @@ export const PARTNERS: PartnerItem[] = [
     accentColor: '#E31E24',
     logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/b/b5/Dahua_Technology_logo.svg',
   },
-  { name: 'Onetouch', accentColor: '#7C3AED' },
+  { name: 'Onetouch', accentColor: '#7B5455' },
   { name: 'Zicom', accentColor: '#E31E24' },
-  { name: 'Matrix', qualifier: 'Telecom | Security', accentColor: '#0E7490' },
-  { name: 'Syntel', qualifier: 'Arvind Limited, Telecom Division', accentColor: '#1F2A5C' },
+  { name: 'Matrix', qualifier: 'Telecom | Security', accentColor: '#7B5455' },
+  { name: 'Syntel', qualifier: 'Arvind Limited, Telecom Division', accentColor: '#202124' },
   {
     name: 'D-Link',
-    accentColor: '#0284C7',
+    accentColor: '#7B5455',
     logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/4/4b/D-Link_logo.svg',
   },
   {
@@ -441,7 +441,7 @@ export const PARTNERS: PartnerItem[] = [
   },
   {
     name: 'Panasonic',
-    accentColor: '#0055A5',
+    accentColor: '#202124',
     logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/4/4c/Panasonic_logo_%28Blue%29.svg',
   },
 ];

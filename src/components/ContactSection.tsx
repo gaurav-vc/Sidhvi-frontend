@@ -141,17 +141,18 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
   return (
     <section
       id="contact"
-      className="border-t border-slate-200 bg-[#F6F8FB] py-16 sm:py-20 lg:py-24"
+      className="border-b border-[#DBDAD7] bg-[#FAF9F7] py-16 sm:py-20 lg:py-24"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <Reveal className="max-w-2xl">
-          <p className="text-xs font-semibold tracking-wider text-[#1FADE4] uppercase">
+          <span className="inline-flex items-center gap-2 text-xs font-bold tracking-wider text-[#7B5455] uppercase">
+            <span className="h-1.5 w-6 rounded-full bg-[#F4C2C2]" />
             Get in Touch
-          </p>
-          <h2 className="mt-2 text-3xl font-bold tracking-tight text-[#1F2A5C] sm:text-4xl [text-wrap:balance]">
+          </span>
+          <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-[#202124] sm:text-4xl [text-wrap:balance]">
             Request a Consultation or Quote
           </h2>
-          <p className="mt-3 text-base text-slate-600">
+          <p className="mt-3 text-base text-[#5A5B62]">
             Speak with our Mumbai team for solution consultation, site design,
             installation, or maintenance support.
           </p>
@@ -162,7 +163,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
           <Reveal
             delay={0.05}
             ref={contactFormRef}
-            className="rounded-2xl border border-slate-200 bg-white p-6 shadow-xs sm:p-8 lg:col-span-7"
+            className="rounded-3xl border border-[#DBDAD7] bg-white p-6 shadow-xs sm:p-8 lg:col-span-7"
           >
             <AnimatePresence mode="wait">
               {submitted ? (
@@ -176,28 +177,28 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                   transition={{ duration: 0.3, ease: EASE_SETTLE }}
                   className="flex flex-col items-start justify-center py-8"
                 >
-                  <span className="flex h-12 w-12 items-center justify-center rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">
+                  <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-50 text-emerald-700 border border-emerald-200">
                     <CheckCircle2 className="h-6 w-6" aria-hidden="true" />
                   </span>
-                  <h3 className="mt-4 text-2xl font-bold text-[#1F2A5C]">
+                  <h3 className="mt-4 text-2xl font-bold text-[#202124]">
                     Enquiry Received
                   </h3>
-                  <p className="mt-2 max-w-lg text-sm leading-relaxed text-slate-600">
+                  <p className="mt-2 max-w-lg text-sm leading-relaxed text-[#5A5B62]">
                     Thank you,{' '}
-                    <span className="font-semibold text-[#1F2A5C]">{values.name}</span>.
+                    <span className="font-bold text-[#202124]">{values.name}</span>.
                     Your enquiry regarding{' '}
-                    <span className="font-semibold text-[#1F2A5C]">{values.service}</span>{' '}
+                    <span className="font-bold text-[#202124]">{values.service}</span>{' '}
                     has been validated. For immediate assistance, call us on{' '}
                     <a
                       href={COMPANY_INFO.phones[0].href}
-                      className="font-semibold text-[#E31E24] underline"
+                      className="font-bold text-[#7B5455] underline hover:text-[#202124]"
                     >
                       {COMPANY_INFO.phones[0].display}
                     </a>{' '}
                     or email{' '}
                     <a
                       href={`mailto:${COMPANY_INFO.email}`}
-                      className="font-semibold text-[#1F2A5C] underline"
+                      className="font-bold text-[#7B5455] underline hover:text-[#202124]"
                     >
                       {COMPANY_INFO.email}
                     </a>
@@ -207,7 +208,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                   <button
                     type="button"
                     onClick={handleReset}
-                    className="mt-6 rounded-lg border border-slate-200 px-4 py-2 text-sm font-semibold text-[#1F2A5C] hover:bg-[#F6F8FB] cursor-pointer"
+                    className="mt-6 rounded-xl border border-[#DBDAD7] px-4.5 py-2 text-sm font-bold text-[#202124] hover:bg-[#EFEEEB] cursor-pointer"
                   >
                     Send Another Enquiry
                   </button>
@@ -227,9 +228,9 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                     <div>
                       <label
                         htmlFor="contact-name"
-                        className="block text-xs font-semibold text-[#1F2A5C]"
+                        className="block text-xs font-bold text-[#202124]"
                       >
-                        Full Name <span className="text-[#E31E24]">*</span>
+                        Full Name <span className="text-[#7B5455]">*</span>
                       </label>
                       <input
                         id="contact-name"
@@ -241,14 +242,14 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                         aria-invalid={Boolean(errors.name)}
                         aria-describedby={errors.name ? 'error-name' : undefined}
                         placeholder="Your full name"
-                        className={`mt-1.5 w-full rounded-lg border px-3.5 py-2.5 text-sm text-[#1F2A5C] placeholder:text-slate-400 focus:outline-none focus:ring-2 ${
+                        className={`mt-1.5 w-full rounded-xl border px-3.5 py-2.5 text-sm text-[#202124] placeholder:text-slate-400 focus:outline-none focus:ring-2 ${
                           errors.name
-                            ? 'border-[#E31E24] focus:ring-[#E31E24]/25'
-                            : 'border-slate-200 focus:border-[#1FADE4] focus:ring-[#1FADE4]/25'
+                            ? 'border-[#9E3A3E] focus:ring-[#9E3A3E]/20'
+                            : 'border-[#DBDAD7] bg-[#FAF9F7]/60 focus:bg-white focus:border-[#7B5455] focus:ring-[#7B5455]/15'
                         }`}
                       />
                       {errors.name && (
-                        <p id="error-name" className="mt-1 text-xs font-medium text-[#E31E24]">
+                        <p id="error-name" className="mt-1 text-xs font-medium text-[#9E3A3E]">
                           {errors.name}
                         </p>
                       )}
@@ -257,7 +258,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                     <div>
                       <label
                         htmlFor="contact-company"
-                        className="block text-xs font-semibold text-[#1F2A5C]"
+                        className="block text-xs font-bold text-[#202124]"
                       >
                         Company / Organisation
                       </label>
@@ -268,7 +269,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                         value={values.company}
                         onChange={(e) => handleChange('company', e.target.value)}
                         placeholder="Company or society name (optional)"
-                        className="mt-1.5 w-full rounded-lg border border-slate-200 px-3.5 py-2.5 text-sm text-[#1F2A5C] placeholder:text-slate-400 focus:border-[#1FADE4] focus:outline-none focus:ring-2 focus:ring-[#1FADE4]/25"
+                        className="mt-1.5 w-full rounded-xl border border-[#DBDAD7] bg-[#FAF9F7]/60 focus:bg-white px-3.5 py-2.5 text-sm text-[#202124] placeholder:text-slate-400 focus:border-[#7B5455] focus:outline-none focus:ring-2 focus:ring-[#7B5455]/15"
                       />
                     </div>
                   </div>
@@ -277,9 +278,9 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                     <div>
                       <label
                         htmlFor="contact-email"
-                        className="block text-xs font-semibold text-[#1F2A5C]"
+                        className="block text-xs font-bold text-[#202124]"
                       >
-                        Email Address <span className="text-[#E31E24]">*</span>
+                        Email Address <span className="text-[#7B5455]">*</span>
                       </label>
                       <input
                         id="contact-email"
@@ -291,14 +292,14 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                         aria-invalid={Boolean(errors.email)}
                         aria-describedby={errors.email ? 'error-email' : undefined}
                         placeholder="you@company.com"
-                        className={`mt-1.5 w-full rounded-lg border px-3.5 py-2.5 text-sm text-[#1F2A5C] placeholder:text-slate-400 focus:outline-none focus:ring-2 ${
+                        className={`mt-1.5 w-full rounded-xl border px-3.5 py-2.5 text-sm text-[#202124] placeholder:text-slate-400 focus:outline-none focus:ring-2 ${
                           errors.email
-                            ? 'border-[#E31E24] focus:ring-[#E31E24]/25'
-                            : 'border-slate-200 focus:border-[#1FADE4] focus:ring-[#1FADE4]/25'
+                            ? 'border-[#9E3A3E] focus:ring-[#9E3A3E]/20'
+                            : 'border-[#DBDAD7] bg-[#FAF9F7]/60 focus:bg-white focus:border-[#7B5455] focus:ring-[#7B5455]/15'
                         }`}
                       />
                       {errors.email && (
-                        <p id="error-email" className="mt-1 text-xs font-medium text-[#E31E24]">
+                        <p id="error-email" className="mt-1 text-xs font-medium text-[#9E3A3E]">
                           {errors.email}
                         </p>
                       )}
@@ -307,9 +308,9 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                     <div>
                       <label
                         htmlFor="contact-phone"
-                        className="block text-xs font-semibold text-[#1F2A5C]"
+                        className="block text-xs font-bold text-[#202124]"
                       >
-                        Phone Number <span className="text-[#E31E24]">*</span>
+                        Phone Number <span className="text-[#7B5455]">*</span>
                       </label>
                       <input
                         id="contact-phone"
@@ -321,14 +322,14 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                         aria-invalid={Boolean(errors.phone)}
                         aria-describedby={errors.phone ? 'error-phone' : undefined}
                         placeholder="+91 98XXX XXXXX"
-                        className={`mt-1.5 w-full rounded-lg border px-3.5 py-2.5 text-sm text-[#1F2A5C] placeholder:text-slate-400 focus:outline-none focus:ring-2 ${
+                        className={`mt-1.5 w-full rounded-xl border px-3.5 py-2.5 text-sm text-[#202124] placeholder:text-slate-400 focus:outline-none focus:ring-2 ${
                           errors.phone
-                            ? 'border-[#E31E24] focus:ring-[#E31E24]/25'
-                            : 'border-slate-200 focus:border-[#1FADE4] focus:ring-[#1FADE4]/25'
+                            ? 'border-[#9E3A3E] focus:ring-[#9E3A3E]/20'
+                            : 'border-[#DBDAD7] bg-[#FAF9F7]/60 focus:bg-white focus:border-[#7B5455] focus:ring-[#7B5455]/15'
                         }`}
                       />
                       {errors.phone && (
-                        <p id="error-phone" className="mt-1 text-xs font-medium text-[#E31E24]">
+                        <p id="error-phone" className="mt-1 text-xs font-medium text-[#9E3A3E]">
                           {errors.phone}
                         </p>
                       )}
@@ -338,9 +339,9 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                   <div>
                     <label
                       htmlFor="contact-service"
-                      className="block text-xs font-semibold text-[#1F2A5C]"
+                      className="block text-xs font-bold text-[#202124]"
                     >
-                      Service of Interest <span className="text-[#E31E24]">*</span>
+                      Service of Interest <span className="text-[#7B5455]">*</span>
                     </label>
                     <select
                       id="contact-service"
@@ -349,7 +350,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                       onChange={(e) => handleChange('service', e.target.value)}
                       aria-invalid={Boolean(errors.service)}
                       aria-describedby={errors.service ? 'error-service' : undefined}
-                      className="mt-1.5 w-full rounded-lg border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-[#1F2A5C] focus:border-[#1FADE4] focus:outline-none focus:ring-2 focus:ring-[#1FADE4]/25"
+                      className="mt-1.5 w-full rounded-xl border border-[#DBDAD7] bg-[#FAF9F7]/60 focus:bg-white px-3.5 py-2.5 text-sm text-[#202124] focus:border-[#7B5455] focus:outline-none focus:ring-2 focus:ring-[#7B5455]/15"
                     >
                       {SERVICE_OPTIONS.map((option) => (
                         <option key={option} value={option}>
@@ -358,7 +359,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                       ))}
                     </select>
                     {errors.service && (
-                      <p id="error-service" className="mt-1 text-xs font-medium text-[#E31E24]">
+                      <p id="error-service" className="mt-1 text-xs font-medium text-[#9E3A3E]">
                         {errors.service}
                       </p>
                     )}
@@ -367,9 +368,9 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                   <div>
                     <label
                       htmlFor="contact-message"
-                      className="block text-xs font-semibold text-[#1F2A5C]"
+                      className="block text-xs font-bold text-[#202124]"
                     >
-                      Requirement Details <span className="text-[#E31E24]">*</span>
+                      Requirement Details <span className="text-[#7B5455]">*</span>
                     </label>
                     <textarea
                       id="contact-message"
@@ -381,28 +382,28 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                       aria-invalid={Boolean(errors.message)}
                       aria-describedby={errors.message ? 'error-message' : undefined}
                       placeholder="Share site location, system requirements, or maintenance enquiry details..."
-                      className={`mt-1.5 w-full rounded-lg border px-3.5 py-2.5 text-sm text-[#1F2A5C] placeholder:text-slate-400 focus:outline-none focus:ring-2 ${
+                      className={`mt-1.5 w-full rounded-xl border px-3.5 py-2.5 text-sm text-[#202124] placeholder:text-slate-400 focus:outline-none focus:ring-2 ${
                         errors.message
-                          ? 'border-[#E31E24] focus:ring-[#E31E24]/25'
-                          : 'border-slate-200 focus:border-[#1FADE4] focus:ring-[#1FADE4]/25'
+                          ? 'border-[#9E3A3E] focus:ring-[#9E3A3E]/20'
+                          : 'border-[#DBDAD7] bg-[#FAF9F7]/60 focus:bg-white focus:border-[#7B5455] focus:ring-[#7B5455]/15'
                       }`}
                     />
                     {errors.message && (
-                      <p id="error-message" className="mt-1 text-xs font-medium text-[#E31E24]">
+                      <p id="error-message" className="mt-1 text-xs font-medium text-[#9E3A3E]">
                         {errors.message}
                       </p>
                     )}
                   </div>
 
                   <div className="flex flex-col justify-between gap-3 pt-1 sm:flex-row sm:items-center">
-                    <p className="text-xs text-slate-500">
-                      All fields marked <span className="text-[#E31E24]">*</span> are required.
+                    <p className="text-xs text-[#5A5B62]">
+                      All fields marked <span className="text-[#7B5455] font-bold">*</span> are required.
                     </p>
                     <motion.button
                       type="submit"
                       whileHover={{ y: -1 }}
                       whileTap={{ scale: 0.98 }}
-                      className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#E31E24] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#c5181d] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1F2A5C] cursor-pointer"
+                      className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#7B5455] px-6.5 py-3.5 text-sm font-bold text-white transition-colors hover:bg-[#654344] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#7B5455] shadow-xs cursor-pointer"
                     >
                       Submit Enquiry
                       <Send className="h-4 w-4" aria-hidden="true" />
@@ -415,21 +416,22 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
 
           {/* Right: Direct Contact Details & Map */}
           <Reveal delay={0.12} className="flex flex-col gap-6 lg:col-span-5">
-            <div className="rounded-2xl border border-slate-200 bg-[#1F2A5C] p-6 text-white sm:p-8">
-              <h3 className="text-xl font-bold text-white">Our Contact Details</h3>
+            <div className="rounded-3xl border border-[#2A2B30] bg-[#202124] p-6 text-white shadow-md sm:p-8">
+              <span className="text-xs font-bold tracking-wider text-[#F4C2C2] uppercase">Direct Channel</span>
+              <h3 className="mt-1 text-2xl font-extrabold text-white">Our Contact Details</h3>
               <p className="mt-1 text-sm text-slate-300">{COMPANY_INFO.name}</p>
 
               <dl className="mt-6 space-y-5 text-sm">
                 <div className="flex items-start gap-3.5">
                   <MapPin
-                    className="mt-0.5 h-5 w-5 shrink-0 text-[#1FADE4]"
+                    className="mt-0.5 h-5 w-5 shrink-0 text-[#F4C2C2]"
                     aria-hidden="true"
                   />
                   <div>
-                    <dt className="text-xs font-semibold tracking-wide text-slate-300 uppercase">
+                    <dt className="text-xs font-bold tracking-wide text-[#F4C2C2] uppercase">
                       Office Address
                     </dt>
-                    <dd className="mt-1 leading-relaxed text-white">
+                    <dd className="mt-1 leading-relaxed text-white font-medium">
                       {COMPANY_INFO.address.line1}
                       <br />
                       {COMPANY_INFO.address.line2}
@@ -441,11 +443,11 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
 
                 <div className="flex items-start gap-3.5">
                   <Phone
-                    className="mt-0.5 h-5 w-5 shrink-0 text-[#1FADE4]"
+                    className="mt-0.5 h-5 w-5 shrink-0 text-[#F4C2C2]"
                     aria-hidden="true"
                   />
                   <div>
-                    <dt className="text-xs font-semibold tracking-wide text-slate-300 uppercase">
+                    <dt className="text-xs font-bold tracking-wide text-[#F4C2C2] uppercase">
                       Phone Numbers
                     </dt>
                     <dd className="mt-1 flex flex-col gap-1">
@@ -453,7 +455,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                         <a
                           key={phone.href}
                           href={phone.href}
-                          className="font-semibold text-white transition-colors hover:text-[#1FADE4] tabular-nums"
+                          className="font-bold text-white transition-colors hover:text-[#F4C2C2] tabular-nums"
                         >
                           {phone.display}
                         </a>
@@ -464,17 +466,17 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
 
                 <div className="flex items-start gap-3.5">
                   <Mail
-                    className="mt-0.5 h-5 w-5 shrink-0 text-[#1FADE4]"
+                    className="mt-0.5 h-5 w-5 shrink-0 text-[#F4C2C2]"
                     aria-hidden="true"
                   />
                   <div>
-                    <dt className="text-xs font-semibold tracking-wide text-slate-300 uppercase">
+                    <dt className="text-xs font-bold tracking-wide text-[#F4C2C2] uppercase">
                       Email
                     </dt>
                     <dd className="mt-1">
                       <a
                         href={`mailto:${COMPANY_INFO.email}`}
-                        className="font-semibold text-white transition-colors hover:text-[#1FADE4] break-all"
+                        className="font-bold text-white transition-colors hover:text-[#F4C2C2] break-all"
                       >
                         {COMPANY_INFO.email}
                       </a>
@@ -484,11 +486,11 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
 
                 <div className="flex items-start gap-3.5">
                   <Globe
-                    className="mt-0.5 h-5 w-5 shrink-0 text-[#1FADE4]"
+                    className="mt-0.5 h-5 w-5 shrink-0 text-[#F4C2C2]"
                     aria-hidden="true"
                   />
                   <div>
-                    <dt className="text-xs font-semibold tracking-wide text-slate-300 uppercase">
+                    <dt className="text-xs font-bold tracking-wide text-[#F4C2C2] uppercase">
                       Website
                     </dt>
                     <dd className="mt-1">
@@ -496,7 +498,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                         href={COMPANY_INFO.websiteUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="font-semibold text-white transition-colors hover:text-[#1FADE4]"
+                        className="font-bold text-white transition-colors hover:text-[#F4C2C2]"
                       >
                         {COMPANY_INFO.website}
                       </a>
@@ -506,8 +508,8 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
               </dl>
             </div>
 
-            {/* Ghatkopar West Map Placeholder + Optional Live Google Map Embed */}
-            <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white">
+            {/* Ghatkopar West Map */}
+            <div className="overflow-hidden rounded-3xl border border-[#DBDAD7] bg-white shadow-xs">
               {showLiveMap ? (
                 <div className="relative h-56 w-full bg-slate-100">
                   <iframe
@@ -519,36 +521,36 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                   />
                 </div>
               ) : (
-                <div className="relative flex h-56 flex-col items-center justify-center bg-gradient-to-br from-[#F6F8FB] to-[#E9EFF8] p-6 text-center">
-                  <MapPin className="h-7 w-7 text-[#E31E24]" aria-hidden="true" />
-                  <p className="mt-2.5 text-sm font-bold text-[#1F2A5C]">
+                <div className="relative flex h-56 flex-col items-center justify-center bg-[#EFEEEB] p-6 text-center">
+                  <MapPin className="h-7 w-7 text-[#7B5455]" aria-hidden="true" />
+                  <p className="mt-2.5 text-sm font-bold text-[#202124]">
                     Ghatkopar West, Mumbai 400086
                   </p>
-                  <p className="mt-1 max-w-xs text-xs text-slate-600">
+                  <p className="mt-1 max-w-xs text-xs text-[#5A5B62]">
                     C-20 Kailash Esplanade, LBS Marg, Opp Shreyas Cinema
                   </p>
                   <button
                     type="button"
                     onClick={() => setShowLiveMap(true)}
-                    className="mt-4 rounded-lg border border-[#1F2A5C]/25 bg-white px-3.5 py-1.5 text-xs font-semibold text-[#1F2A5C] transition-colors hover:border-[#1F2A5C] cursor-pointer"
+                    className="mt-4 rounded-xl border border-[#DBDAD7] bg-white px-3.5 py-1.5 text-xs font-bold text-[#202124] transition-colors hover:border-[#7B5455] cursor-pointer"
                   >
                     Load Interactive Map
                   </button>
                 </div>
               )}
 
-              <div className="flex items-center justify-between border-t border-slate-200 px-4 py-3 text-xs">
-                <span className="font-medium text-slate-600">
+              <div className="flex items-center justify-between border-t border-[#DBDAD7] px-4 py-3 text-xs bg-[#FAF9F7]">
+                <span className="font-semibold text-[#5A5B62]">
                   Google Map · Ghatkopar West
                 </span>
                 <a
                   href={COMPANY_INFO.address.googleMapsQuery}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 font-semibold text-[#1F2A5C] hover:text-[#E31E24]"
+                  className="inline-flex items-center gap-1 font-bold text-[#7B5455] hover:text-[#202124]"
                 >
                   Open in Maps
-                  <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
+                  <ExternalLink className="h-3.5 w-3.5 text-[#7B5455]" aria-hidden="true" />
                 </a>
               </div>
             </div>

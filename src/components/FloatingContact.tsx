@@ -21,9 +21,9 @@ export const FloatingContact: React.FC = () => {
         rel="noopener noreferrer"
         whileTap={{ scale: 0.94 }}
         aria-label="Chat on WhatsApp with Sidhvi Tech Solutions"
-        className="inline-flex h-11 items-center gap-1.5 rounded-full bg-[#1F2A5C] px-4 text-xs font-semibold text-white shadow-lg ring-1 ring-white/20"
+        className="inline-flex h-11 items-center gap-1.5 rounded-full bg-[#202124] px-4 text-xs font-bold text-white shadow-lg ring-1 ring-[#F4C2C2]/40"
       >
-        <MessageCircle className="h-4 w-4 text-[#1FADE4]" aria-hidden="true" />
+        <MessageCircle className="h-4 w-4 text-[#F4C2C2]" aria-hidden="true" />
         <span>WhatsApp</span>
       </motion.a>
 
@@ -31,7 +31,7 @@ export const FloatingContact: React.FC = () => {
         href={primaryPhone.href}
         whileTap={{ scale: 0.94 }}
         aria-label={`Call ${primaryPhone.display}`}
-        className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-[#E31E24] text-white shadow-lg ring-1 ring-white/20"
+        className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-[#7B5455] text-white shadow-lg ring-1 ring-white/20 hover:bg-[#654344]"
       >
         <Phone className="h-4 w-4" aria-hidden="true" />
       </motion.a>

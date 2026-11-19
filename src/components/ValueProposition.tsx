@@ -25,26 +25,27 @@ export const ValueProposition: React.FC = () => {
   return (
     <section
       id="process"
-      className="border-y border-slate-200 bg-[#F6F8FB] py-16 sm:py-20 lg:py-24"
+      className="border-b border-[#DBDAD7] bg-[#EFEEEB] py-16 sm:py-20 lg:py-24"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <Reveal className="flex flex-col justify-between gap-4 md:flex-row md:items-end">
           <div className="max-w-2xl">
-            <p className="text-xs font-semibold tracking-wider text-[#1FADE4] uppercase">
+            <span className="inline-flex items-center gap-2 text-xs font-bold tracking-wider text-[#7B5455] uppercase">
+              <span className="h-1.5 w-6 rounded-full bg-[#F4C2C2]" />
               How We Work
-            </p>
-            <h2 className="mt-2 text-3xl font-bold tracking-tight text-[#1F2A5C] sm:text-4xl [text-wrap:balance]">
+            </span>
+            <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-[#202124] sm:text-4xl [text-wrap:balance]">
               Our Value Proposition
             </h2>
-            <p className="mt-3 text-base text-slate-600">
+            <p className="mt-3 text-base text-[#5A5B62]">
               A six-stage delivery cycle connecting consultation and engineering design with
               installation, training, and ongoing lifecycle support.
             </p>
           </div>
 
           <div className="flex items-center gap-3">
-            <span className="inline-flex items-center gap-2 text-xs font-medium text-[#333F6B]">
-              <RotateCw className="h-4 w-4 text-[#E31E24]" aria-hidden="true" />
+            <span className="inline-flex items-center gap-2 text-xs font-bold text-[#7B5455]">
+              <RotateCw className="h-4 w-4 text-[#7B5455]" aria-hidden="true" />
               <span>Continuous 6-Stage Delivery Cycle</span>
             </span>
 
@@ -52,16 +53,16 @@ export const ValueProposition: React.FC = () => {
               type="button"
               onClick={() => setAutoPlay((prev) => !prev)}
               aria-label={autoPlay ? 'Pause cycle progression' : 'Auto-advance cycle'}
-              className="inline-flex items-center gap-1.5 rounded-lg border border-slate-200 bg-white px-2.5 py-1.5 text-xs font-semibold text-[#1F2A5C] transition-colors hover:border-[#1FADE4] cursor-pointer"
+              className="inline-flex items-center gap-1.5 rounded-xl border border-[#DBDAD7] bg-white px-3 py-1.5 text-xs font-bold text-[#202124] transition-colors hover:border-[#7B5455] cursor-pointer shadow-2xs"
             >
               {autoPlay ? (
                 <>
-                  <Pause className="h-3 w-3 text-[#E31E24]" aria-hidden="true" />
+                  <Pause className="h-3.5 w-3.5 text-[#7B5455]" aria-hidden="true" />
                   <span>Pause</span>
                 </>
               ) : (
                 <>
-                  <Play className="h-3 w-3 text-[#1FADE4]" aria-hidden="true" />
+                  <Play className="h-3.5 w-3.5 text-[#7B5455]" aria-hidden="true" />
                   <span>Auto</span>
                 </>
               )}
@@ -74,7 +75,7 @@ export const ValueProposition: React.FC = () => {
           {/* Left: Interactive 6-Sector SVG Cycle Diagram (matches PDF Page 9 structure) */}
           <div className="flex items-center justify-center lg:col-span-5">
             <div className="relative flex h-72 w-72 items-center justify-center sm:h-80 sm:w-80">
-              {/* Outer Dotted Red Return Path */}
+              {/* Outer Dotted Rosewood Return Path */}
               <motion.svg
                 viewBox="0 0 320 320"
                 className="h-full w-full"
@@ -85,8 +86,8 @@ export const ValueProposition: React.FC = () => {
                   cy="160"
                   r="146"
                   fill="none"
-                  stroke="#E31E24"
-                  strokeWidth="3"
+                  stroke="#7B5455"
+                  strokeWidth="2.5"
                   strokeDasharray="6 8"
                   strokeLinecap="round"
                   animate={{ rotate: 360 }}
@@ -130,13 +131,13 @@ export const ValueProposition: React.FC = () => {
                         d={d}
                         initial={false}
                         animate={{
-                          fill: isActive ? '#1F2A5C' : '#FFFFFF',
-                          stroke: isActive ? '#1FADE4' : '#CBD5E1',
+                          fill: isActive ? '#7B5455' : '#FFFFFF',
+                          stroke: isActive ? '#F4C2C2' : '#DBDAD7',
                           scale: isActive ? 1.03 : 1,
                         }}
                         whileHover={{ scale: 1.03 }}
                         transition={{ duration: 0.25, ease: EASE_SETTLE }}
-                        strokeWidth={isActive ? 2 : 1.2}
+                        strokeWidth={isActive ? 2.5 : 1.2}
                         style={{ transformOrigin: '160px 160px' }}
                       />
                       <text
@@ -145,7 +146,7 @@ export const ValueProposition: React.FC = () => {
                         textAnchor="middle"
                         dominantBaseline="central"
                         className="pointer-events-none select-none text-[12px] font-bold"
-                        fill={isActive ? '#FFFFFF' : '#1F2A5C'}
+                        fill={isActive ? '#FFFFFF' : '#202124'}
                         style={{ fontFamily: 'var(--font-mono)' }}
                       >
                         {stage.step}
@@ -156,11 +157,11 @@ export const ValueProposition: React.FC = () => {
               </motion.svg>
 
               {/* Center Hub Readout */}
-              <div className="pointer-events-none absolute flex h-24 w-24 flex-col items-center justify-center rounded-full border border-slate-200 bg-white text-center shadow-sm">
-                <span className="font-mono text-xs font-bold text-[#E31E24] tabular-nums">
+              <div className="pointer-events-none absolute flex h-24 w-24 flex-col items-center justify-center rounded-full border border-[#DBDAD7] bg-white text-center shadow-xs">
+                <span className="font-mono text-xs font-bold text-[#7B5455] tabular-nums">
                   {activeStage.step}/06
                 </span>
-                <span className="mt-0.5 px-2 text-[10px] font-bold leading-tight text-[#1F2A5C]">
+                <span className="mt-0.5 px-2 text-[10px] font-bold leading-tight text-[#202124]">
                   Lifecycle
                 </span>
               </div>
@@ -180,30 +181,30 @@ export const ValueProposition: React.FC = () => {
                   whileHover={{ y: -2 }}
                   whileTap={{ scale: 0.99 }}
                   transition={{ duration: 0.15 }}
-                  className={`group relative flex flex-col justify-between rounded-xl border p-4 text-left transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1FADE4] cursor-pointer ${
+                  className={`group relative flex flex-col justify-between rounded-2xl border p-4.5 text-left transition-all duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#7B5455] cursor-pointer ${
                     isActive
-                      ? 'border-[#1F2A5C] bg-[#1F2A5C] text-white shadow-md'
-                      : 'border-slate-200 bg-white text-[#1F2A5C] hover:border-[#1FADE4]'
+                      ? 'border-[#7B5455] bg-[#7B5455] text-white shadow-md'
+                      : 'border-[#DBDAD7] bg-white text-[#202124] hover:border-[#7B5455]/60 shadow-2xs'
                   }`}
                 >
                   <div className="flex items-center justify-between">
                     <span
-                      className={`font-mono text-xs font-semibold tabular-nums ${
-                        isActive ? 'text-[#1FADE4]' : 'text-[#E31E24]'
+                      className={`font-mono text-xs font-bold tabular-nums ${
+                        isActive ? 'text-[#F4C2C2]' : 'text-[#7B5455]'
                       }`}
                     >
                       {stage.step}
                     </span>
                     <ArrowRight
                       className={`h-3.5 w-3.5 transition-transform duration-150 group-hover:translate-x-0.5 ${
-                        isActive ? 'text-[#1FADE4]' : 'text-slate-300'
+                        isActive ? 'text-[#F4C2C2]' : 'text-slate-400'
                       }`}
                       aria-hidden="true"
                     />
                   </div>
                   <h3
                     className={`mt-2 text-sm font-bold leading-snug ${
-                      isActive ? 'text-white' : 'text-[#1F2A5C]'
+                      isActive ? 'text-white' : 'text-[#202124]'
                     }`}
                   >
                     {stage.title}
@@ -211,8 +212,8 @@ export const ValueProposition: React.FC = () => {
                   <span
                     className={`mt-3 inline-block h-[2px] w-8 transition-colors ${
                       isActive
-                        ? 'bg-[#E31E24]'
-                        : 'bg-slate-200 group-hover:bg-[#1FADE4]'
+                        ? 'bg-[#F4C2C2]'
+                        : 'bg-[#DBDAD7] group-hover:bg-[#7B5455]'
                     }`}
                     aria-hidden="true"
                   />
@@ -223,7 +224,7 @@ export const ValueProposition: React.FC = () => {
         </Reveal>
 
         {/* Active Stage Detail Bar with AnimatePresence */}
-        <div className="mt-6 flex flex-col justify-between gap-4 rounded-xl border border-slate-200 bg-white px-6 py-5 shadow-xs sm:flex-row sm:items-center">
+        <div className="mt-6 flex flex-col justify-between gap-4 rounded-2xl border border-[#DBDAD7] bg-white px-6 py-5 shadow-xs sm:flex-row sm:items-center">
           <div className="min-h-[56px] max-w-3xl flex-1">
             <AnimatePresence mode="wait">
               <motion.div
@@ -233,23 +234,23 @@ export const ValueProposition: React.FC = () => {
                 exit={{ opacity: 0, y: -8 }}
                 transition={{ duration: 0.25, ease: EASE_SETTLE }}
               >
-                <div className="flex items-center gap-2 text-xs font-medium text-slate-500">
-                  <span className="font-mono text-[#E31E24] tabular-nums">
+                <div className="flex items-center gap-2 text-xs font-medium text-[#5A5B62]">
+                  <span className="font-mono font-bold text-[#7B5455] tabular-nums">
                     Stage {activeStage.step} of 06
                   </span>
                   <span aria-hidden="true">·</span>
-                  <span className="font-semibold text-[#1F2A5C]">
+                  <span className="font-bold text-[#202124]">
                     {activeStage.title}
                   </span>
                 </div>
-                <p className="mt-1.5 text-sm leading-relaxed text-slate-600 sm:text-base">
+                <p className="mt-1.5 text-sm leading-relaxed text-[#5A5B62] sm:text-base">
                   {activeStage.summary}
                 </p>
               </motion.div>
             </AnimatePresence>
           </div>
 
-          <div className="flex items-center gap-2 shrink-0">
+          <div className="flex items-center gap-2.5 shrink-0">
             <button
               type="button"
               onClick={() =>
@@ -258,7 +259,7 @@ export const ValueProposition: React.FC = () => {
                     VALUE_PROPOSITION_STAGES.length
                 )
               }
-              className="rounded-lg border border-slate-200 px-3 py-1.5 text-xs font-semibold text-[#1F2A5C] transition-colors hover:bg-[#F6F8FB] cursor-pointer"
+              className="rounded-xl border border-[#DBDAD7] px-3.5 py-2 text-xs font-bold text-[#202124] transition-colors hover:bg-[#EFEEEB] cursor-pointer"
             >
               Previous
             </button>
@@ -269,7 +270,7 @@ export const ValueProposition: React.FC = () => {
                   (activeIndex + 1) % VALUE_PROPOSITION_STAGES.length
                 )
               }
-              className="rounded-lg bg-[#1F2A5C] px-3 py-1.5 text-xs font-semibold text-white transition-colors hover:bg-[#333F6B] cursor-pointer"
+              className="rounded-xl bg-[#7B5455] px-4 py-2 text-xs font-bold text-white transition-colors hover:bg-[#654344] shadow-xs cursor-pointer"
             >
               Next Stage
             </button>
